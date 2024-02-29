@@ -12,9 +12,9 @@ public static class DrinkService
 	{
 		Drinks =
 		[
-			new() {Id = 1, StrDrink = "Bleeding Surgeon", StrDrinkThumb="DrinkApi/Images/bleedin_surgeon.jpeg"},
-			new() {Id = 2, StrDrink = "Furlong", StrDrinkThumb="DrinkApi/Images/furlong.jpeg"},
-			new() {Id = 3, StrDrink = "Jack Vanilla", StrDrinkThumb="DrinkApi/Images/jack_vanilla.jpeg"},
+			new() {Id = 1, StrDrink = "Bleeding Surgeon", StrDrinkThumb="https://cocktail-stack.netlify.app/static/9a9686fb30894c841b2b4b3ce366659c/9a128/usuvvr1472719118.jpg"},
+			new() {Id = 2, StrDrink = "Furlong", StrDrinkThumb="https://cocktail-stack.netlify.app/static/e5e7592566b139924a68c8edb05e0c8c/9a128/ssxvww1472669166.jpg"},
+			new() {Id = 3, StrDrink = "Jack Vanilla", StrDrinkThumb="https://cocktail-stack.netlify.app/static/a5b08ad08fd68557ecf5dfdfb7a5d41a/9a128/kjnt7z1504793319.jpg"},
 		];
 	}
 
