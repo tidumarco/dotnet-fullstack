@@ -1,4 +1,4 @@
-@DrinkApi_HostAddress = http://localhost:5024
+@DrinkApi_HostAddress = http://localhost:5024/api
 
 GET {{DrinkApi_HostAddress}}/drink/
 Accept: application/json
