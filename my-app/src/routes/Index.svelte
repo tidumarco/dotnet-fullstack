@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Drink } from '../types/Drink';
-
+	type Data = {
+		drinks: Drink[];
+	};
 	let loading = true;
 	let startup = false;
-	let data;
+	let data: Data;
 	let ingredients: string[] = [];
 
 	let drink: Drink;
@@ -17,6 +19,7 @@
 			drink = data.drinks[0];
 			loading = false;
 			startup = false;
+			console.log('DRINK', drink);
 		} catch (error) {
 			console.error('Fetch Error:', error);
 		}
