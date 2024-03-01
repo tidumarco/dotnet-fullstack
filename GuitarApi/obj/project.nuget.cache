@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "iOIOvJ8OFW41EdpMCmtf2DJAUJvt8JwfuWWSk0HJSvEHDruR6C2eHAQJBUAWe09N5Uql9dBNQwhkqoimscNhOA==",
+  "success": true,
+  "projectFilePath": "/Users/marcotidu/CsharpProjects/dotnet-fullstack/GuitarApi/GuitarApi.csproj",
+  "expectedPackageFiles": [
+    "/Users/marcotidu/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/marcotidu/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/marcotidu/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/marcotidu/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/marcotidu/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/marcotidu/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

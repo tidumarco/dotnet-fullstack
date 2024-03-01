@@ -1,0 +1,47 @@
+@GuitarApi_HostAddress = http://localhost:5024
+
+GET {{GuitarApi_HostAddress}}/guitar/
+Accept: application/json
+
+###
+
+GET {{GuitarApi_HostAddress}}/guitar/1
+Accept: application/json
+
+###
+
+POST {{GuitarApi_HostAddress}}/guitar
+Content-Type: application/json
+
+{
+	"name": "Ibanez RG 570",  
+	"description": "Shredding guitar",
+	"price": 1299
+}
+
+###
+
+PUT {{GuitarApi_HostAddress}}/guitar/2
+Content-Type: application/json
+
+{
+	"id": 2,
+	"name": "Gibson Les Paul",
+	"description": "Solid Body guitar",
+	"price": 1999
+}
+
+###
+
+POST {{GuitarApi_HostAddress}}/guitar
+Content-Type: application/json
+
+{
+	"name": "Squier Telecaster",  
+	"description": "Beginner guitar",
+	"price": 129
+}
+
+###
+
+DELETE {{GuitarApi_HostAddress}}/guitar/4
