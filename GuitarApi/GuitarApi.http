@@ -14,9 +14,9 @@ POST {{GuitarApi_HostAddress}}/guitar
 Content-Type: application/json
 
 {
-	"name": "Ibanez RG 570",  
-	"description": "Shredding guitar",
-	"price": 1299
+	"name": "Squier Jazzmaster",  
+	"description": "Alternative guitar",
+	"price": 399
 }
 
 ### 
