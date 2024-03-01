@@ -1,5 +1,5 @@
 <nav class="header-nav">
-	<a href="/home" class="nav-link">Home</a>
+	<a href="/" class="nav-link">Home</a>
 	<a href="/add" class="nav-link">Add</a>
 	<a href="/settings" class="nav-link">Settings</a>
 </nav>

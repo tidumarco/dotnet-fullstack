@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import GuitarCard from '../../slots/Guitar.svelte';
-	import type { Guitar } from '../../types/Guitar';
+	import GuitarCard from '../slots/Guitar.svelte';
+	import type { Guitar } from '../types/Guitar';
 	let data: Guitar[];
 	let loadingState = true;
 	let confirmationMessage = '';
