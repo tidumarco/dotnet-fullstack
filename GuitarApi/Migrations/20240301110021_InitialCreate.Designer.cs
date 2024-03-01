@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuitarApi.Migrations
 {
     [DbContext(typeof(GuitarContext))]
-    [Migration("20240301094117_InitialCreate")]
+    [Migration("20240301110021_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -30,6 +30,8 @@ namespace GuitarApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<double?>("Price")

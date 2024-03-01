@@ -1,16 +1,16 @@
 using GuitarApi.Controllers;
 using GuitarApi.Data;
 using GuitarApi.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
-
+builder.Services.AddDbContext<GuitarContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSqlite<GuitarContext>("Data Source=Guitar.db");
 builder.Services.AddScoped<GuitarService>();
 
 var app = builder.Build();
