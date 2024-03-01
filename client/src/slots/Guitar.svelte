@@ -1,3 +1,14 @@
+<script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
+	export let guitarId: number | undefined;
+	const dispatch = createEventDispatcher();
+
+	async function deleteGuitar() {
+		dispatch('guitarDeleted', { guitarId });
+	}
+</script>
+
 <article class="guitar-card">
 	<h2>
 		<slot name="name" />
@@ -11,10 +22,17 @@
 	<div class="price">
 		<slot name="price" />
 	</div>
+	<div>
+		<button on:click={deleteGuitar}>Delete</button>
+	</div>
 </article>
 
 <style>
 	.guitar-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		height: 250px;
 		width: 250px;
 		border: 1px solid #aaa;
 		border-radius: 2px;
@@ -22,17 +40,25 @@
 		padding: 1em;
 		margin-bottom: 20px;
 	}
+	.description,
+	.price {
+		padding: 10px 0 10px 0;
+	}
 
 	h2 {
-		padding: 0 0 0.2em 0;
-		margin: 0 0 1em 0;
 		border-bottom: 1px solid #ff3e00;
 	}
 
-	.description,
-	.price {
-		padding: 0 0 10px 1.5em;
-		margin: 0 0 0.5em 0;
-		line-height: 1.2;
+	button {
+		background-color: #ff3e00;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		padding: 0.5em 1em;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: #ff5c33;
 	}
 </style>

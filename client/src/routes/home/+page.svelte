@@ -4,6 +4,7 @@
 	import type { Guitar } from '../../types/Guitar';
 	let data: Guitar[];
 	let loadingState = true;
+	let confirmationMessage = '';
 
 	onMount(async () => {
 		try {
@@ -12,9 +13,30 @@
 			loadingState = false;
 		} catch (error) {}
 	});
+
+	async function handleDelete(event: any) {
+		const deletedGuitarId = event.detail.guitarId;
+
+		try {
+			const response = await fetch(`http://localhost:5024/guitar/${deletedGuitarId}`, {
+				method: 'DELETE'
+			});
+			if (response.ok) {
+				confirmationMessage = 'Guitar deleted successfully';
+				window.alert(confirmationMessage);
+				window.location.reload();
+			} else {
+				confirmationMessage = 'Failed to add guitar';
+				window.alert(confirmationMessage);
+				console.error(confirmationMessage);
+			}
+		} catch (error) {
+			console.error('Error deleting guitar:', error);
+		}
+	}
 </script>
 
-<h1>Welcome to my guitar store</h1>
+<h1>Marco's Guitars</h1>
 
 <h2>
 	{#if loadingState == true}
@@ -24,7 +46,7 @@
 {#if loadingState == false}
 	<div class="guitar-cards">
 		{#each data as guitar}
-			<GuitarCard>
+			<GuitarCard guitarId={guitar.id} on:guitarDeleted={handleDelete}>
 				<span slot="name">{guitar.name}</span>
 				<span slot="description">
 					{guitar.description}
