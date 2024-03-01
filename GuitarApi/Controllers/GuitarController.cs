@@ -8,57 +8,71 @@ namespace GuitarApi.Controllers;
 [Route("[controller]")]
 public class GuitarController : ControllerBase
 {
-	public GuitarController()
+	private readonly GuitarService _service;
+	public GuitarController(GuitarService service)
 	{
+		_service = service;
 	}
 
 	[HttpGet]
-	public ActionResult<List<Guitar>> GetAll() =>
-		GuitarService.GetAll();
+	public IEnumerable<Guitar> GetAll()
+	{
+		return _service.GetAll();
+	}
 
 	[HttpGet("{id}")]
-	public ActionResult<Guitar> Get(int id)
+	public ActionResult<Guitar> GetById(int id)
 	{
-		var guitar = GuitarService.Get(id);
+		var guitar = _service.GetById(id);
 
-		if (guitar == null)
+		if (guitar is not null)
+		{
+			return guitar;
+		}
+		else
+		{
 			return NotFound();
-
-		return guitar;
+		}
 	}
 
 	[HttpPost]
 	public IActionResult Create(Guitar guitar)
 	{
-		GuitarService.Add(guitar);
-		return CreatedAtAction(nameof(Get), new { id = guitar.Id }, guitar);
+		_service.Create(guitar);
+		return CreatedAtAction(nameof(GetById), new { id = guitar.Id }, guitar);
 	}
 
 	[HttpPut("{id}")]
 	public IActionResult Update(int id, Guitar guitar)
 	{
-		if (id != guitar.Id)
-			return BadRequest();
+		var guitarToUpdate = _service.GetById(id);
 
-		var existingGuitar = GuitarService.Get(id);
-		if (existingGuitar is null)
+		if (guitarToUpdate is not null)
+		{
+			_service.Update(id, guitarToUpdate);
+			return NoContent();
+		}
+		else
+		{
 			return NotFound();
+		}
 
-		GuitarService.Update(guitar);
-
-		return NoContent();
 	}
 
 	[HttpDelete("{id}")]
 	public IActionResult Delete(int id)
 	{
-		var guitar = GuitarService.Get(id);
+		var guitar = _service.GetById(id);
 
-		if (guitar is null)
+		if (guitar is not null)
+		{
+			_service.DeleteById(id);
+			return NoContent();
+		}
+		else
+		{
 			return NotFound();
+		}
 
-		GuitarService.Delete(id);
-
-		return NoContent();
 	}
 }

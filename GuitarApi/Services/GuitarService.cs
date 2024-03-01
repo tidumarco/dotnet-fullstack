@@ -1,45 +1,66 @@
 using GuitarApi.Models;
+using GuitarApi.Data;
+using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 
 namespace GuitarApi.Services;
 
-public static class GuitarService
+public class GuitarService
 {
-	static List<Guitar> Guitars { get; }
-	static int nextId = 3;
-	static GuitarService()
+	private readonly GuitarContext _context;
+	public GuitarService(GuitarContext context)
 	{
-		Guitars = new List<Guitar>
+		_context = context;
+	}
+
+	public IEnumerable<Guitar> GetAll()
+	{
+		return _context.Guitars.AsNoTracking().ToList();
+	}
+
+	public Guitar? GetById(int id)
+	{
+		return _context.Guitars
+		.Include(g => g.Name)
+		.Include(g => g.Description)
+		.Include(g => g.Price)
+		.AsNoTracking()
+		.SingleOrDefault(g => g.Id == id);
+	}
+
+	public Guitar Create(Guitar newGuitar)
+	{
+		_context.Guitars.Add(newGuitar);
+		_context.SaveChanges();
+
+		return newGuitar;
+	}
+
+	public void DeleteById(int id)
+	{
+		var guitarToDelete = _context.Guitars.Find(id);
+		if (guitarToDelete is not null)
 		{
-			new Guitar {Id = 1, Name = "Fender Stratocaster", Description = "Best solo guitar", Price = 1299},
-			new Guitar {Id = 2, Name = "Gibson Les Paul", Description = "A rock legend", Price = 1999},
-		};
+			_context.Guitars.Remove(guitarToDelete);
+			_context.SaveChanges();
+		}
+
+
 	}
 
-	public static List<Guitar> GetAll() => Guitars;
-
-	public static Guitar? Get(int id) => Guitars.FirstOrDefault(g => g.Id == id);
-
-	public static void Add(Guitar guitar)
+	public void Update(int guitarId, Guitar updatedGuitar)
 	{
-		guitar.Id = nextId++;
-		Guitars.Add(guitar);
-	}
+		var guitarToUpdate = _context.Guitars.Find(guitarId);
 
-	public static void Delete(int id)
-	{
-		var guitar = Get(id);
-		if (guitar is null)
-			return;
+		if (guitarToUpdate is null)
+		{
+			throw new InvalidOperationException("Guitar does not exist");
+		}
 
-		Guitars.Remove(guitar);
-	}
+		guitarToUpdate.Name = updatedGuitar.Name;
+		guitarToUpdate.Description = updatedGuitar.Description;
+		guitarToUpdate.Price = updatedGuitar.Price;
 
-	public static void Update(Guitar guitar)
-	{
-		var index = Guitars.FindIndex(p => p.Id == guitar.Id);
-		if (index == -1)
-			return;
-
-		Guitars[index] = guitar;
+		_context.SaveChanges();
 	}
 }
