@@ -5,11 +5,11 @@ Accept: application/json
 
 ###
 
-GET {{GuitarApi_HostAddress}}/guitar/1
+GET {{GuitarApi_HostAddress}}/guitar/2
 Accept: application/json
-
+ 
 ###
-
+ 
 POST {{GuitarApi_HostAddress}}/guitar
 Content-Type: application/json
 
@@ -19,13 +19,12 @@ Content-Type: application/json
 	"price": 1299
 }
 
-###
-
+### 
+ 
 PUT {{GuitarApi_HostAddress}}/guitar/2
 Content-Type: application/json
 
 {
-	"id": 2,
 	"name": "Gibson Les Paul",
 	"description": "Solid Body guitar",
 	"price": 1999

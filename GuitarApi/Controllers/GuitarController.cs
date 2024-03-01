@@ -49,7 +49,7 @@ public class GuitarController : ControllerBase
 
 		if (guitarToUpdate is not null)
 		{
-			_service.Update(id, guitarToUpdate);
+			_service.Update(id, guitar);
 			return NoContent();
 		}
 		else

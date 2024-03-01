@@ -20,12 +20,7 @@ public class GuitarService
 
 	public Guitar? GetById(int id)
 	{
-		return _context.Guitars
-		.Include(g => g.Name)
-		.Include(g => g.Description)
-		.Include(g => g.Price)
-		.AsNoTracking()
-		.SingleOrDefault(g => g.Id == id);
+		return _context.Guitars.Find(id);
 	}
 
 	public Guitar Create(Guitar newGuitar)
@@ -50,17 +45,15 @@ public class GuitarService
 
 	public void Update(int guitarId, Guitar updatedGuitar)
 	{
-		var guitarToUpdate = _context.Guitars.Find(guitarId);
+		var existingGuitar = _context.Guitars.Find(guitarId);
 
-		if (guitarToUpdate is null)
+		if (existingGuitar != null)
 		{
-			throw new InvalidOperationException("Guitar does not exist");
+			existingGuitar.Name = updatedGuitar.Name;
+			existingGuitar.Description = updatedGuitar.Description;
+			existingGuitar.Price = updatedGuitar.Price;
+
+			_context.SaveChanges();
 		}
-
-		guitarToUpdate.Name = updatedGuitar.Name;
-		guitarToUpdate.Description = updatedGuitar.Description;
-		guitarToUpdate.Price = updatedGuitar.Price;
-
-		_context.SaveChanges();
 	}
 }
