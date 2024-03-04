@@ -32,8 +32,6 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build/static" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-      - name: Rename index.html to app.html
-        run: mv build/static/index.html build/static/app.html
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
