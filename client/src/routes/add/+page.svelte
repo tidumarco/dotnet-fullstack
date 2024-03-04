@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Guitar } from '../../types/Guitar';
+	import { afterUpdate } from 'svelte';
 
 	let name: string;
 	let description: string;
@@ -34,24 +35,39 @@
 			window.alert(confirmationMessage);
 		}
 	}
+
+	afterUpdate(() => {
+		if (confirmationMessage !== '') {
+			setTimeout(() => {
+				confirmationMessage = '';
+			}, 3000);
+		}
+	});
 </script>
 
-<form class="guitar-form" on:submit|preventDefault={handleSubmit}>
-	<label for="name">Name:</label>
-	<input type="text" id="name" bind:value={name} />
+<div class="border border-gray-300 rounded p-6 my-4">
+	<h1 class="text-4xl font-bold mb-4">Guitar loader</h1>
+	<form
+		class="guitar-form border border-gray-300 rounded p-6 my-4"
+		on:submit|preventDefault={handleSubmit}
+	>
+		<label for="name">Name:</label>
+		<input type="text" id="name" bind:value={name} />
 
-	<label for="description">Description:</label>
-	<textarea id="description" rows="4" bind:value={description}></textarea>
+		<label for="description">Description:</label>
+		<textarea id="description" rows="4" bind:value={description}></textarea>
 
-	<label for="price">Price:</label>
-	<input type="number" id="price" bind:value={price} />
+		<label for="price">Price:</label>
+		<input type="number" id="price" bind:value={price} />
 
-	<button type="submit">Add Guitar</button>
-
-	{#if confirmationMessage}
-		<p>Last guitar added: {lastEnteredGuitar.name}</p>
-	{/if}
-</form>
+		<button type="submit">Add Guitar</button>
+		{#if confirmationMessage}
+			<div class="border border-gray-300 rounded p-6 my-4">
+				<p>Last guitar added: {lastEnteredGuitar.name}</p>
+			</div>
+		{/if}
+	</form>
+</div>
 
 <style>
 	.guitar-form {

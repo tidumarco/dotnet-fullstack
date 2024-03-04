@@ -1,4 +1,3 @@
-// import adapter from '@sveltejs/adapter-auto';
 import azure from 'svelte-adapter-azure-swa';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
@@ -12,10 +11,6 @@ const config = {
 		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: azure()
-		// adapter: adapter()
-		// csrf: {
-		// 	checkOrigin: false
-		// }
 	}
 };
 

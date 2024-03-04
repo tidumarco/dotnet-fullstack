@@ -1,7 +1,11 @@
+<script>
+	import '../app.css';
+</script>
+
 <nav class="header-nav">
 	<a href="/" class="nav-link">Home</a>
 	<a href="/add" class="nav-link">Add</a>
-	<a href="/settings" class="nav-link">Settings</a>
+	<a href="/about" class="nav-link">About me</a>
 </nav>
 
 <slot />

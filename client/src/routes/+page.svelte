@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import GuitarCard from '../slots/Guitar.svelte';
+	import GuitarCard from './Guitar.svelte';
 	import type { Guitar } from '../types/Guitar';
 	let data: Guitar[];
 	let loadingState = true;
@@ -36,31 +36,23 @@
 	}
 </script>
 
-<h1>Marco's Guitars</h1>
+<h1 class="text-4xl font-bold mb-4 px-10 py-6">Marco's Guitars</h1>
 
-<h2>
+<h2 class="mb-2 px-10">
 	{#if loadingState == true}
 		Loading...{/if}
 </h2>
-<h2>Guitars</h2>
+
 {#if loadingState == false}
-	<div class="guitar-cards">
+	<div class="grid grid-cols-4">
 		{#each data as guitar}
 			<GuitarCard guitarId={guitar.id} on:guitarDeleted={handleDelete}>
 				<span slot="name">{guitar.name}</span>
 				<span slot="description">
 					{guitar.description}
 				</span>
-				<span slot="price"><b><em>Price:</em></b> {guitar.price} €</span>
+				<span slot="price" class="font-bold italic">Price: {guitar.price} €</span>
 			</GuitarCard>
 		{/each}
 	</div>
 {/if}
-
-<style>
-	.guitar-cards {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between; /* Adjust alignment as needed */
-	}
-</style>
