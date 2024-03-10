@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GuitarApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8f161722e375c863338d1a2b9fd96a4f972d42a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94e5805bb6dc6080a2f22c9716c4a9681b342818")]
 [assembly: System.Reflection.AssemblyProductAttribute("GuitarApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GuitarApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
