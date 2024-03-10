@@ -22,6 +22,7 @@ jobs:
       - name: Build app
         run: |
           cd client
+          npm install
           npm run build
       - name: Build And Deploy
         id: builddeploy
