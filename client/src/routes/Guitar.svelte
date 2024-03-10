@@ -9,15 +9,13 @@
 	}
 </script>
 
-<article
-	class="guitar-card flex flex-col justify-between h-64 w-64 border border-gray-300 rounded-md shadow-md p-4 mb-4"
->
-	<h2 class="text-xl font-medium pb-2 border-b border-orange-500">
+<article class="custom-article">
+	<h2 class="custom-heading">
 		<slot name="name" />
 	</h2>
 
 	<div class="description">
-		<h4 class="font-semibold">Description</h4>
+		<h4 class="description-heading">Description</h4>
 		<slot name="description" />
 	</div>
 
@@ -26,11 +24,45 @@
 	</div>
 
 	<div>
-		<button
-			class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
-			on:click={deleteGuitar}
-		>
-			Delete
-		</button>
+		<button class="delete-button" on:click={deleteGuitar}> Delete </button>
 	</div>
 </article>
+
+<style>
+	.custom-article {
+		border: 1px solid #ccc;
+		border-radius: 0.375rem;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		padding: 1rem;
+		margin-bottom: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 16rem;
+		width: 16rem;
+	}
+
+	.custom-heading {
+		font-size: 1.25rem;
+		font-weight: 500;
+		padding-bottom: 0.5rem;
+		border-bottom: 2px solid orange;
+	}
+
+	.description-heading {
+		font-weight: 600;
+	}
+
+	.delete-button {
+		background-color: #f56565;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		padding: 5px 10px;
+		cursor: pointer;
+	}
+
+	.delete-button:hover {
+		background-color: #e53e3e;
+	}
+</style>

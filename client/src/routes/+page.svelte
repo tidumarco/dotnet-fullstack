@@ -36,25 +36,47 @@
 	}
 </script>
 
-<svelte:head>
-	<h1 class="text-4xl font-bold mb-4 px-10 py-6">Marco's Guitars</h1>
+<h1>Marco's Guitars</h1>
 
-	<h2 class="mb-2 px-10">
-		{#if loadingState == true}
-			Loading...{/if}
-	</h2>
-</svelte:head>
-
-{#if loadingState == false}
-	<div class="grid grid-cols-4">
+{#if loadingState == true}
+	<h2>Loading...</h2>
+{:else}
+	<div class="guitar-list">
 		{#each data as guitar}
 			<GuitarCard guitarId={guitar.id} on:guitarDeleted={handleDelete}>
 				<span slot="name">{guitar.name}</span>
 				<span slot="description">
 					{guitar.description}
 				</span>
-				<span slot="price" class="font-bold italic">Price: {guitar.price} €</span>
+				<span slot="price" style="font-style: italic;">Price: {guitar.price} €</span>
 			</GuitarCard>
 		{/each}
 	</div>
 {/if}
+
+<style>
+	h1 {
+		font-family: 'Poppins', sans-serif;
+		font-size: 36px;
+		color: #333;
+		margin-bottom: 20px;
+		font-weight: 500;
+	}
+
+	h2 {
+		font-size: 18px;
+		color: #555;
+	}
+
+	.guitar-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 20px;
+	}
+
+	.guitar-list > * {
+		flex-basis: calc(33.333% - 10px);
+		margin-bottom: 20px;
+	}
+</style>
