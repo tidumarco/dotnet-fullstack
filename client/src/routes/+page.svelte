@@ -8,7 +8,8 @@
 
 	onMount(async () => {
 		try {
-			const response = await fetch('http://localhost:5024/Guitar');
+			const response = await fetch('https://guitar-backend.azurewebsites.net/Guitar');
+			// const response = await fetch('http://localhost:5024/Guitar');
 			data = await response.json();
 			loadingState = false;
 		} catch (error) {}
@@ -18,9 +19,13 @@
 		const deletedGuitarId = event.detail.guitarId;
 
 		try {
-			const response = await fetch(`http://localhost:5024/guitar/${deletedGuitarId}`, {
-				method: 'DELETE'
-			});
+			const response = await fetch(
+				`https://guitar-backend.azurewebsites.net/guitar/${deletedGuitarId}`,
+				{
+					// const response = await fetch(`http://localhost:5024/guitar/${deletedGuitarId}`, {
+					method: 'DELETE'
+				}
+			);
 			if (response.ok) {
 				confirmationMessage = 'Guitar deleted successfully';
 				window.alert(confirmationMessage);
