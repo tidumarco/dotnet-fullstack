@@ -8,7 +8,11 @@
 	<a href="/about" class="nav-link">About me</a>
 </nav>
 
-<slot />
+<div class="app">
+	<main>
+		<slot />
+	</main>
+</div>
 
 <style>
 	.header-nav {

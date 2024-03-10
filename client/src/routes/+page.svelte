@@ -36,12 +36,14 @@
 	}
 </script>
 
-<h1 class="text-4xl font-bold mb-4 px-10 py-6">Marco's Guitars</h1>
+<svelte:head>
+	<h1 class="text-4xl font-bold mb-4 px-10 py-6">Marco's Guitars</h1>
 
-<h2 class="mb-2 px-10">
-	{#if loadingState == true}
-		Loading...{/if}
-</h2>
+	<h2 class="mb-2 px-10">
+		{#if loadingState == true}
+			Loading...{/if}
+	</h2>
+</svelte:head>
 
 {#if loadingState == false}
 	<div class="grid grid-cols-4">
